@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav"
+    app:startDestination="@id/posts">
+
+    <fragment
+        android:id="@+id/posts"
+        android:name="com.udacity.posts.Posts"
+        android:label="Posts" >
+        <action
+            android:id="@+id/action_posts_to_postsDetails"
+            app:destination="@id/postsDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/postsDetails"
+        android:name="com.udacity.details.PostsDetails"
+        android:label="PostsDetails" >
+        <action
+            android:id="@+id/action_postsDetails_to_posts"
+            app:destination="@id/posts" />
+    </fragment>
+</navigation>

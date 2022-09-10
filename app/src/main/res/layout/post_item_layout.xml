@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        app:cardElevation="10dp"
+        app:cardCornerRadius="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_marginTop="10dp"
+                app:strokeColor="@color/black"
+                app:strokeWidth="2dp"
+                app:cornerRadius="10dp"
+                android:id="@+id/share_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/share"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/comment_btn"
+                app:layout_constraintTop_toBottomOf="@id/content_text" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_marginTop="10dp"
+                app:strokeColor="@color/black"
+                app:strokeWidth="2dp"
+                app:cornerRadius="10dp"
+                android:id="@+id/comment_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/comment"
+                app:layout_constraintEnd_toStartOf="@+id/share_btn"
+                app:layout_constraintStart_toEndOf="@+id/like_btn"
+                app:layout_constraintTop_toBottomOf="@id/content_text" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_marginTop="10dp"
+                app:strokeColor="@color/black"
+                app:strokeWidth="2dp"
+                app:cornerRadius="10dp"
+                android:id="@+id/like_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/like"
+                app:layout_constraintEnd_toStartOf="@+id/comment_btn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/content_text" />
+
+            <TextView
+                android:layout_marginBottom="8dp"
+                android:id="@+id/content_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/content"
+                app:layout_constraintBottom_toTopOf="@+id/comment_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/author_text" />
+
+            <TextView
+                android:id="@+id/author_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="@string/author"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
