@@ -41,4 +41,10 @@ class PostsAdapter(): RecyclerView.Adapter<PostsAdapter.ViewHolder>()
         postsList.addAll(posts)
         notifyDataSetChanged()
     }
+
+    fun clear()
+    {
+        postsList.clear()
+        notifyDataSetChanged()
+    }
 }
