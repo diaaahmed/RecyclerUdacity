@@ -5,22 +5,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.udacity.recyclerudacity.R
+import com.udacity.click.Click
+import com.udacity.model.PostModel
 import com.udacity.recyclerudacity.databinding.FragmentPostsBinding
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
-class Posts : Fragment(), SwipeRefreshLayout.OnRefreshListener {
+class Posts : Fragment(), SwipeRefreshLayout.OnRefreshListener, Click {
 
     private val ui by lazy  {
         FragmentPostsBinding.inflate(layoutInflater)
     }
 
     private val adapter by lazy  {
-        PostsAdapter()
+        PostsAdapter(this)
     }
 
     private val viewModel by lazy  {
@@ -51,7 +52,7 @@ class Posts : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun observe(){
-        viewModel.posts_live_data.observe(viewLifecycleOwner){
+        viewModel.posts_list_livedata.observe(viewLifecycleOwner){
             adapter.addPosts(it)
         }
     }
@@ -65,5 +66,16 @@ class Posts : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             ui.swipeRefresh.isRefreshing = false
 
         }
+    }
+
+    override fun onClick(post: PostModel)
+    {
+        Toast.makeText(requireContext(), "" +
+                "Name is ${post.author} and content is ${post.content}", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun shareBtn(position: Int)
+    {
+        Toast.makeText(requireContext(), " Position is $position", Toast.LENGTH_SHORT).show()
     }
 }

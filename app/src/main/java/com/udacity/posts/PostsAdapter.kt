@@ -1,12 +1,14 @@
 package com.udacity.posts
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.udacity.click.Click
 import com.udacity.model.PostModel
 import com.udacity.recyclerudacity.databinding.PostItemLayoutBinding
 
-class PostsAdapter(): RecyclerView.Adapter<PostsAdapter.ViewHolder>()
+class PostsAdapter(var click: Click): RecyclerView.Adapter<PostsAdapter.ViewHolder>()
 {
     private var postsList = mutableListOf<PostModel>()
 
@@ -15,8 +17,22 @@ class PostsAdapter(): RecyclerView.Adapter<PostsAdapter.ViewHolder>()
     {
             fun bind(item:PostModel) = with(postItemBinding)
             {
+
                 authorText.text = item.author
                 contentText.text = item.content
+
+                likeBtn.setOnClickListener{
+                    click.shareBtn(adapterPosition)
+
+                }
+
+                authorText.setOnClickListener{
+                    click.onClick(item)
+                }
+
+//                authorText.setOnClickListener {
+//                    Toast.makeText(context, "is"+item.author, Toast.LENGTH_SHORT).show()
+//                }
             }
     }
 
@@ -36,6 +52,7 @@ class PostsAdapter(): RecyclerView.Adapter<PostsAdapter.ViewHolder>()
         holder.bind(postsList[position])
     }
 
+
     fun addPosts(posts: MutableList<PostModel>)
     {
         postsList.addAll(posts)
@@ -47,4 +64,5 @@ class PostsAdapter(): RecyclerView.Adapter<PostsAdapter.ViewHolder>()
         postsList.clear()
         notifyDataSetChanged()
     }
+
 }
